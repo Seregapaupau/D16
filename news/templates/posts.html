@@ -1,0 +1,20 @@
+{% extends 'flatpages/default.html' %}
+{% block content %}
+{% for post in posts %}
+     <tr>
+        <td>
+            <b><h1><a href="{% url 'post' post.id %}">{{ post.title }}</a></h1></b>
+        </td>
+         <td>
+             {{ post.category }}
+         </td>
+         <td>
+             {{ post.author }}
+         </td>
+         <td>
+             <p><a> {{ post.content|safe }}</a></p>
+             <hr>
+         </td>
+     </tr>
+{% endfor %}
+{% endblock content %}

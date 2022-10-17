@@ -1,0 +1,33 @@
+{% extends 'flatpages/default.html' %}
+{% block content %}
+<p></p>
+<p>{{ post.title }}</p>
+<p>{{ post.category }}</p>
+<p></p>
+<p>{{ post.content | safe }}</p>
+<p></p>
+<br>
+<br>
+<hr>
+<b>Комментарии</b> <br>
+<hr>
+{% for item in post.comments_post.all %}
+
+Автор:   <b>{{ item.author }}</b> <br>
+            {{ item.text }} <br>
+<hr>
+
+
+
+<br>
+<br>
+
+{% endfor %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Добавить комментарий">
+</form>
+{% endblock content %}
+
